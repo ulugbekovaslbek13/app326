@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Calc</title>
+    <style>
+        body { background: #0f111a; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: monospace; }
+        .calc { background: #141724; padding: 25px; border-radius: 20px; box-shadow: 5px 5px 15px #0a0b11, -5px -5px 15px #1e2337; }
+        #screen { width: 100%; height: 50px; background: #0f111a; border: none; color: #56d364; text-align: right; padding: 10px; font-size: 24px; box-sizing: border-box; border-radius: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(4, 50px); gap: 12px; margin-top: 15px; }
+        button { height: 50px; background: #141724; border: none; color: white; font-size: 18px; border-radius: 8px; box-shadow: 3px 3px 8px #0a0b11, -3px -3px 8px #1e2337; cursor: pointer; }
+        button:active { box-shadow: inset 2px 2px 5px #0a0b11, inset -2px -2px 5px #1e2337; }
+    </style>
+</head>
+<body>
+<div class="calc">
+    <input type="text" id="screen" readonly>
+    <div class="grid">
+        <button onclick="document.getElementById('screen').value=''">C</button>
+        <button onclick="document.getElementById('screen').value+='/'">/</button>
+        <button onclick="document.getElementById('screen').value+='*'">*</button>
+        <button onclick="document.getElementById('screen').value+='-'">-</button>
+        <button onclick="document.getElementById('screen').value+='7'">7</button>
+        <button onclick="document.getElementById('screen').value+='8'">8</button>
+        <button onclick="document.getElementById('screen').value+='9'">9</button>
+        <button onclick="document.getElementById('screen').value+='+'">+</button>
+        <button onclick="document.getElementById('screen').value+='1'">1</button>
+        <button onclick="document.getElementById('screen').value+='2'">2</button>
+        <button onclick="document.getElementById('screen').value+='3'">3</button>
+        <button onclick="evalScore()">=</button>
+    </div>
+</div>
+<script>
+    function evalScore() {
+        try { document.getElementById('screen').value = eval(document.getElementById('screen').value); }
+        catch { document.getElementById('screen').value = 'Xato'; }
+    }
+</script>
+</body>
+</html>
